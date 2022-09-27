@@ -28,6 +28,14 @@ You will see the sum of all 0 to n pandigital numbers with sub-strings fulfillin
 
 **User Stories**
 
+As a user, I expect to get an error message, if I do any of:
+
+- Not enter anything in the input field
+- Entering text other than a number
+- Entering a number less than 2 or greater than 9
+- Including leading zeros (e.g. 02)
+- Entering a number, but it is not an integer
+
 As a user, I expect the function `substringDivisibility(5)` to return a number.
 
 As a user, I expect the function `substringDivisibility(5)` to return 12444480.
