@@ -20,6 +20,12 @@ Information at [Project Euler 043](https://projecteuler.net/problem=43)
 
 ## UX
 
+**Getting Started**
+
+Enter a whole number between 2 and 9 (without leading zeros) and click on the Submit Button.
+
+You will see the sum of all 0 to n pandigital numbers with sub-strings fulfilling n-2 of these divisibility properties unless you have made an invalid input.  For example, if you entered 5, you would get 12444480.  Click on the Reset Button to clear the information or to start again.
+
 **User Stories**
 
 As a user, I expect the function `substringDivisibility(5)` to return a number.
