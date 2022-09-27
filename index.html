@@ -31,5 +31,22 @@
         </ul>
         <p>Find the sum of all 0 to n pandigital numbers with substrings fulfilling n-2 of these divisibility properties.  Begin by entering a number.</p>
     </section>
+
+    <!-- Set Up Form -->
+    <section class="container-fluid">
+        <form>
+            <!-- Set Up Label and Input -->
+            <article class="mb-3">
+                <label for="mynumber" class="form-label">Number (Required)</label>
+                <input class="form-control" placeholder="Enter whole number between 2 and 9 (without leading zeros)"  title="Enter whole number between 2 and 9 (without leading zeros)" id="mynumber">
+            </article>
+
+            <!-- Set Up and Center Buttons -->
+            <article class="d-grid gap-2 d-flex justify-content-center">
+                <button type="button" class="btn btn-info" onclick="getNumberInfo()">Submit</button>
+                <button type="reset" class="btn btn-warning" onclick="clearInfo()">Reset</button>
+            </article>
+        </form>
+    </section>
 </body>
 </html>
