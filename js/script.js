@@ -1,3 +1,5 @@
+const DIVISORS = [2,3,5,7,11,13,17];
+
 // Function to Get Number Information (including Invalid Input)
 function getNumberInfo() {
     // Set Up Variable
@@ -28,6 +30,14 @@ function smallestPandigital(n) {
 function largestPandigital(n) {
     return Array(n).fill(0).map((_,i) => i).reduce((sum,c) => sum + (c)*(10**c));
 }
+
+function testDivisibility(digits,n) {
+    for (i=0;i<n-2;i++) {
+        let threeDigits = 100 * digits[i+1] + 10 * digits[i+2] + digits[i+3];
+        if (threeDigits % DIVISORS[i] !==0) return false;
+    }
+    return true;
+}
 /* 
     Function to return the sum of all pandigital numbers which
     pass n-2 of these divisibility properties
@@ -38,7 +48,16 @@ function largestPandigital(n) {
 */
 function substringDivisibility(n) {
    let sum = 0;
-   for (let i=smallest)
+   for (let i=smallestPandigital(n);i<=largestPandigital(n+1);i++) {
+    if (isPandigital(i)) {
+        let str = i.toString();
+        if (str.length < n+1) {
+            str = "0" + str;
+        }
+        if (testDivisibility(str,n)) sum += i;
+    }
+   }
+   return sum;
 }
 
 // Function to Clear Information
