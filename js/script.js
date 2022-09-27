@@ -32,3 +32,23 @@ function testDivisibility(digits,n) {
 function factorial(num) {
     return num<=1 ? 1 : num * factorial(num-1);
 }
+
+// Function to Permute Digits.  Returns an array.
+function permuteDigits(digits) {
+    const upperBound = digits.length - 1;
+    for (let i=upperBound;i>=0;i--) {
+        if (digits[i] < digits[i+1]) {
+            for (let j=upperBound;j>i;j--) {
+                if (digits[i] < digits[j]) {
+                    [digits[i],digits[j]] = [digits[j],digits[i]];
+                    const numSwaps = (upperBound - i)/2;
+                    for (let k=1;k<=numSwaps;k++) {
+                        [digits[i+k],digits[upperBound-k+1]] = [digits[upperBound-k+1],digits[i+k]];
+                    }
+                    return digits;
+                }
+            }
+        }
+    }
+    return digits;
+}
