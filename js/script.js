@@ -21,6 +21,10 @@ function isPandigital(num) {
     const numString = num.toString();
     return Array(numString.length).fill(0).every((_,i) => numString.indexOf(i+1) !== -1);
 }
+
+function smallestPandigital(n) {
+    return Array(n).fill(0).map((_,i) => i).reduce((sum,c) = sum + (c+1)*(10**c));
+}
 /* 
     Function to return the sum of all pandigital numbers which
     pass n-2 of these divisibility properties
