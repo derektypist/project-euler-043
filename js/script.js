@@ -20,7 +20,7 @@ function getNumberInfo() {
 
 // Check if number num is pandigital
 function isPandigital(num,n) {
-    const numString = num.toString();
+    let numString = num.toString();
     if (numString.length < n + 1) numString = "0" + numString;
     return Array(numString.length).fill(0).every((_,i) => numString.indexOf(i) !== -1);
 }
