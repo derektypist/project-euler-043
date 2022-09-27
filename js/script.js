@@ -26,7 +26,7 @@ function isPandigital(num,n) {
 }
 
 function smallestPandigital(n) {
-    return Array(n).fill(0).map((_,i) => n-i).reduce((sum,c) => sum + (n-c) * (10**c),0);
+    return Array(n).fill(0).map((_,i) => i).reduce((sum,c) => sum + (n-c) * (10**c),0);
 }
 function largestPandigital(n) {
     return Array(n).fill(0).map((_,i) => i).reduce((sum,c) => sum + (c)*(10**c),0);
