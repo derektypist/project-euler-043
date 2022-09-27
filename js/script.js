@@ -1,3 +1,4 @@
+// Set Up Global Array
 const DIVISORS = [2,3,5,7,11,13,17];
 
 // Function to Get Number Information (including Invalid Input)
@@ -25,9 +26,12 @@ function isPandigital(num,n) {
     return Array(numString.length).fill(0).every((_,i) => numString.indexOf(i) !== -1);
 }
 
+// Function to Get Smallest Pandigital
 function smallestPandigital(n) {
     return Array(n).fill(0).map((_,i) => i).reduce((sum,c) => sum + (n-c) * (10**c),0);
 }
+
+// Function to Get Largest Pandigital
 function largestPandigital(n) {
     return Array(n).fill(0).map((_,i) => i).reduce((sum,c) => sum + (c)*(10**c),0);
 }
