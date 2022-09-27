@@ -52,3 +52,22 @@ function permuteDigits(digits) {
     }
     return digits;
 }
+
+/* 
+    Function to return the sum of all pandigital numbers which
+    pass n-2 of these divisibility properties
+    substringDivisibility(5) returns 12444480
+    substringDivisibility(7) returns 1099210170
+    substringDivisibility(8) returns 1113342912
+    substringDivisibility(9) returns 16695334890
+*/
+function substringDivisibility(n) {
+    let sum = 0;
+    const numPermutations = factorial(n+1);
+    let permutation = Array(n+1).fill(0).map((_,i) => i);
+    for (let i=0;i<numPermutations;i++) {
+        if (testDivisibility(permutation,n)) sum += parseInt(permutation.join(""));
+        permutation = permuteDigits(permutation);
+    }
+    return sum;
+}
