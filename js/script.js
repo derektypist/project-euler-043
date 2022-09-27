@@ -27,3 +27,8 @@ function testDivisibility(digits,n) {
     }
     return true;
 }
+
+// Function to Calculate the Factorial of the number num
+function factorial(num) {
+    return num<=1 ? 1 : num * factorial(num-1);
+}
