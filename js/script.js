@@ -16,6 +16,11 @@ function getNumberInfo() {
     document.getElementById("numinfo").innerHTML = txt;
 }
 
+// Check if number num is pandigital
+function isPandigital(num) {
+    const numString = num.toString();
+    return Array(numString.length).fill(0).every((_,i) => numString.indexOf(i+1) !== -1);
+}
 /* 
     Function to return the sum of all pandigital numbers which
     pass n-2 of these divisibility properties
@@ -25,48 +30,7 @@ function getNumberInfo() {
     substringDivisibility(9) returns 16695334890
 */
 function substringDivisibility(n) {
-    function isSubDivisible(digits) {
-        const factors = [2,3,5,7,11,13,17];
-        for (let i=1;i<digits.length-2;i++) {
-            const subNumber = 100 * digits[i] + 10 * digits[i+1] + digits[i+2];
-            if (subNumber % factors[i-1] !== 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    function heapsPermutations(k,digits,conditionCheck,results) {
-        if (k===1) {
-            if (conditionCheck(digits)) {
-                const number = parseInt(digits.join(''),10);
-                results.push(number);
-            }
-            return;
-        }
-
-        heapsPermutations(k-1,digits,conditionCheck,results);
-        for (let i=0;i<k-1;i++) {
-            if (k%2===0) {
-                [digits[i],digits[k-1]] == [digits[k-1],digits[i]];
-            } else {
-                [digits[0],digits[k-1]] == [digits[k-1],digits[0]];
-            }
-            heapsPermutations(k-1,digits,conditionCheck,results);
-        }
-        return;
-
-    }
-
-    const allowedDigits = [...Array(n+1).keys()];
-    let divisiblePandigitals = [];
-    heapsPermutations(allowedDigits.length,allowedDigits,isSubDivisible,divisiblePandigitals);
-
-    let sum = 0;
-    for (let i=0;i<divisiblePandigitals.length;i++) {
-        sum += divisiblePandigitals[i];
-    }
-    return sum;
+   
 }
 
 // Function to Clear Information
