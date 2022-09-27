@@ -1,6 +1,3 @@
-// Set Up Global Array
-const DIVISORS = [2, 3, 5, 7, 11, 13, 17];
-
 // Function to Get Number Information (including Invalid Input)
 function getNumberInfo() {
     // Set Up Variable
@@ -19,50 +16,6 @@ function getNumberInfo() {
     document.getElementById("numinfo").innerHTML = txt;
 }
 
-// Function to Check Divisibility
-function testDivisibility(digits, n) {
-    for (let i = 0; i < n - 2; i++) {
-        let threeDigits = 100 * digits[i + 1] + 10 * digits[i + 2] + digits[i + 3];
-        if (threeDigits % DIVISORS[i] !== 0) return false;
-    }
-    return true;
-}
-
-// Function to Calculate the Factorial of the number num
-function factorial(num) {
-    return num <= 1 ? 1 : num * factorial(num - 1);
-}
-
-// Function to Permute Digits.  Returns an array.
-function permuteDigits(digits) {
-    const upperBound = digits.length - 1;
-    for (let i = upperBound; i >= 0; i--) {
-        if (digits[i] < digits[i + 1]) {
-            for (let j = upperBound; j > i; j--) {
-                if (digits[i] < digits[j]) {
-                    [digits[i], digits[j]] = [digits[j], digits[i]];
-                    const numSwaps = (upperBound - i) / 2;
-                    for (let k = 1; k <= numSwaps; k++) {
-                        [digits[i+k],digits[upperBound - k + 1]] = [digits[upperBound - k + 1],digits[i+k]];
-                    }
-                    return digits;
-                }
-            }
-        }
-    }
-    return digits;
-}
-
-// Function to get the digits
-function getDigits(digits) {
-    let sum = 0;
-    let upperBound = digits.length - 1;
-    for (let i = 0; i <= upperBound; i++) {
-        sum += digits[i] * (10 ** (upperBound - i));
-    }
-    return sum;
-}
-
 /* 
     Function to return the sum of all pandigital numbers which
     pass n-2 of these divisibility properties
@@ -72,12 +25,46 @@ function getDigits(digits) {
     substringDivisibility(9) returns 16695334890
 */
 function substringDivisibility(n) {
+    function isSubDivisible(digits) {
+        const factors = [2,3,5,7,11,13,17];
+        for (let i=1;i<digits.length-2;i++) {
+            const subNumber = 100 * digits[i] + 10 * digits[i+1] + digits[i+2];
+            if (subNumber % factors[i-1] !== 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function heapsPermutations(k,digits,conditionCheck,results) {
+        if (k===1) {
+            if (conditionCheck(digits)) {
+                const number = parseInt(digits.join(''),10);
+                results.push(number);
+            }
+            return;
+        }
+
+        heapsPermutations(k-1,digits,conditionCheck,results);
+        for (let i=0;i<k-1;i++) {
+            if (k%2===0) {
+                [digits[i],digits[k-1]] == [digits[k-1],digits[i]];
+            } else {
+                [digits[0],digits[k-1]] == [digits[k-1],digits[0]];
+            }
+            heapsPermutations(k-1,digits,conditionCheck,results);
+        }
+        return;
+
+    }
+
+    const allowedDigits = [...Array(n+1).keys()];
+    let divisiblePandigitals = [];
+    heapsPermutations(allowedDigits.length,allowedDigits,isSubDivisible,divisiblePandigitals);
+
     let sum = 0;
-    const numPermutations = factorial(n + 1);
-    let permutation = Array(n + 1).fill(0).map((_,i) => i);
-    for (let i = 0; i < numPermutations; i++) {
-        if (testDivisibility(permutation, n)) sum += getDigits(permutation);
-        permutation = permuteDigits(permutation);
+    for (let i=0;i<divisiblePandigitals.length;i++) {
+        sum += divisiblePandigitals[i];
     }
     return sum;
 }
