@@ -23,7 +23,10 @@ function isPandigital(num) {
 }
 
 function smallestPandigital(n) {
-    return Array(n).fill(0).map((_,i) => i).reduce((sum,c) = sum + (c+1)*(10**c));
+    return Array(n).fill(0).map((_,i) => n-i).reduce((sum,c) => sum + (n-c) * (10**c));
+}
+function largestPandigital(n) {
+    return Array(n).fill(0).map((_,i) => i).reduce((sum,c) => sum + (c)*(10**c));
 }
 /* 
     Function to return the sum of all pandigital numbers which
@@ -34,7 +37,8 @@ function smallestPandigital(n) {
     substringDivisibility(9) returns 16695334890
 */
 function substringDivisibility(n) {
-   
+   let sum = 0;
+   for (let i=smallest)
 }
 
 // Function to Clear Information
