@@ -43,7 +43,7 @@ function permuteDigits(digits) {
                     [digits[i], digits[j]] = [digits[j], digits[i]];
                     const numSwaps = (upperBound - i) / 2;
                     for (let k = 1; k <= numSwaps; k++) {
-                        [digits[i + k], digits[upperBound - k + 1]] = [digits[upperBound - k + 1], digits[i + k]];
+                        [digits[i+k],digits[upperBound - k + 1]] = [digits[upperBound - k + 1],digits[i+k]];
                     }
                     return digits;
                 }
