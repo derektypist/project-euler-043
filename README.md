@@ -2,7 +2,7 @@
 
 The number, 1406357289, is a 0 to 9 pandigital number because it is made up of each of the digits 0 to 9 in some order, but it also has a rather interesting sub-string divisibility property.
 
-Let d<sub>1</sub> be the 1st digit, d<sub>2<sub> be the 2nd digit, and so on.  In this way we note the following:
+Let d<sub>1</sub> be the 1st digit, d<sub>2</sub> be the 2nd digit, and so on.  In this way we note the following:
 
 - d<sub>2</sub>d<sub>3</sub>d<sub>4</sub>=406 is divisible by 2
 - d<sub>3</sub>d<sub>4</sub>d<sub>5</sub>=063 is divisible by 3
@@ -37,6 +37,6 @@ User Stories on function `substringDivisibility(n)` taken from
 
 **Information Architecture**
 
-The function `substringDivisibility(n)` returns a number, where n is a number.
+The function `substringDivisibility(n)` returns a number, where n is a number between 2 and 9.
 
 
