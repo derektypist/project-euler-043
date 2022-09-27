@@ -79,7 +79,7 @@ function substringDivisibility(n) {
         if (testDivisibility(permutation,n)) sum += getDigits(permutation);
         permutation = permuteDigits(permutation);
     }
-    return sum;
+    return permutation;
 }
 
 // Function to Clear Information
