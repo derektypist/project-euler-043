@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Euler 043 - Sub-string Divisibility</title>
     <!-- Load Styles -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
     <!-- Set Up Header -->
     <header class="container-fluid text-center">
@@ -18,8 +21,10 @@
 
     <!-- Set Up Instructions -->
     <section class="container-fluid instructions">
-        <p>The number, 1406357289, is a 0 to 9 pandigital number because it is made up of each of the digits 0 to 9 in some order, but it also has a rather interesting sub-string divisibility property.</p>
-        <p>Let d<sub>1</sub> be the 1st digit, d<sub>2</sub> be the 2nd digit, and so on.  In this way, we note the following:</p>
+        <p>The number, 1406357289, is a 0 to 9 pandigital number because it is made up of each of the digits 0 to 9 in
+            some order, but it also has a rather interesting sub-string divisibility property.</p>
+        <p>Let d<sub>1</sub> be the 1st digit, d<sub>2</sub> be the 2nd digit, and so on. In this way, we note the
+            following:</p>
         <ul>
             <li>d<sub>2</sub>d<sub>3</sub>d<sub>4</sub>= 406 is divisible by 2</li>
             <li>d<sub>3</sub>d<sub>4</sub>d<sub>5</sub>= 063 is divisible by 3</li>
@@ -29,7 +34,8 @@
             <li>d<sub>7</sub>d<sub>8</sub>d<sub>9</sub>= 728 is divisible by 13</li>
             <li>d<sub>8</sub>d<sub>9</sub>d<sub>10</sub>= 289 is divisible by 17</li>
         </ul>
-        <p>Find the sum of all 0 to n pandigital numbers with substrings fulfilling n-2 of these divisibility properties.  Begin by entering a number.</p>
+        <p>Find the sum of all 0 to n pandigital numbers with substrings fulfilling n-2 of these divisibility
+            properties. Begin by entering a number.</p>
     </section>
 
     <!-- Set Up Form -->
@@ -38,7 +44,8 @@
             <!-- Set Up Label and Input -->
             <article class="mb-3">
                 <label for="mynumber" class="form-label">Number (Required)</label>
-                <input class="form-control" placeholder="Enter whole number between 2 and 9 (without leading zeros)"  title="Enter whole number between 2 and 9 (without leading zeros)" id="mynumber">
+                <input class="form-control" placeholder="Enter whole number between 2 and 9 (without leading zeros)"
+                    title="Enter whole number between 2 and 9 (without leading zeros)" id="mynumber">
             </article>
 
             <!-- Set Up and Center Buttons -->
@@ -55,4 +62,5 @@
         <script src="js/script.js"></script>
     </section>
 </body>
+
 </html>
