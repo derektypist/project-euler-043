@@ -18,3 +18,12 @@ function getNumberInfo() {
     // Display Information in the Browser
     document.getElementById("numinfo").innerHTML = txt;
 }
+
+// Function to Check Divisibility
+function testDivisibility(digits,n) {
+    for (let i=0;i<n-2;i++) {
+        let threeDigits = 100 * digits[i+1] + 10 * digits[i+2] + digits[i+3];
+        if (threeDigits % DIVISORS[i] !== 0) return false;
+    }
+    return true;
+}
