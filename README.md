@@ -53,4 +53,29 @@ User Stories on function `substringDivisibility(n)` taken from
 
 The function `substringDivisibility(n)` returns a number, where n is a number between 2 and 9.
 
+## Features
 
+Allows the user to enter a number in order to get the sum of all 0 to that number of pandigital numbers.  Performs checks on valid user input.  If the input is not valid, an error message is displayed.
+
+## Technologies
+
+Uses HTML5, CSS3, JavaScript, Bootstrap 5.2.1 and Google Fonts.
+
+## Testing
+
+Ensure all user stories have been met.
+
+## Deployment
+
+Deployed on [GitHub Pages](https://derektypist.github.io/project-euler-043) at the main branch.
+
+## Credits
+
+### Content
+
+Written by me.
+
+### Acknowledgements
+
+- [Project Euler](https://projecteuler.net)
+- [FreeCodeCamp](https://www.freecodecamp.org)
