@@ -7,8 +7,8 @@ function getNumberInfo() {
     // Get the value of the Input Field
     let num = document.getElementById("mynumber").value;
     // Check if the input is valid
-    if (isNaN(num) || num.length == 0 || num < 2 || num > 9 || (num.length > 1 && num[0] == "0") || !Number.isInteger(Number(num))) {
-        txt += `Invalid Input.  Please enter a whole number between 2 and 9 without leading zeros.`;
+    if (isNaN(num) || num.length == 0 || num < 3 || num > 9 || (num.length > 1 && num[0] == "0") || !Number.isInteger(Number(num))) {
+        txt += `Invalid Input.  Please enter a whole number between 3 and 9 without leading zeros.`;
     } else {
         txt += `You have entered the number ${num}.<p>`;
         txt += `Sum of all 0 to ${num} pandigital numbers is ${substringDivisibility(num)}.`;
@@ -19,21 +19,22 @@ function getNumberInfo() {
 }
 
 // Check if number num is pandigital
-function isPandigital(num) {
+function isPandigital(num,n) {
     const numString = num.toString();
-    return Array(numString.length).fill(0).every((_,i) => numString.indexOf(i+1) !== -1);
+    if (numString.length < n + 1) numString = "0" + numString;
+    return Array(numString.length).fill(0).every((_,i) => numString.indexOf(i) !== -1);
 }
 
 function smallestPandigital(n) {
-    return Array(n).fill(0).map((_,i) => n-i).reduce((sum,c) => sum + (n-c) * (10**c));
+    return Array(n).fill(0).map((_,i) => n-i).reduce((sum,c) => sum + (n-c) * (10**c),0);
 }
 function largestPandigital(n) {
-    return Array(n).fill(0).map((_,i) => i).reduce((sum,c) => sum + (c)*(10**c));
+    return Array(n).fill(0).map((_,i) => i).reduce((sum,c) => sum + (c)*(10**c),0);
 }
 
 function testDivisibility(digits,n) {
     for (i=0;i<n-2;i++) {
-        let threeDigits = 100 * digits[i+1] + 10 * digits[i+2] + digits[i+3];
+        let threeDigits = (100 * parseInt(digits[i+1])) + (10 * parseInt(digits[i+2])) + parseInt(digits[i+3]);
         if (threeDigits % DIVISORS[i] !==0) return false;
     }
     return true;
@@ -49,7 +50,7 @@ function testDivisibility(digits,n) {
 function substringDivisibility(n) {
    let sum = 0;
    for (let i=smallestPandigital(n);i<=largestPandigital(n+1);i++) {
-    if (isPandigital(i)) {
+    if (isPandigital(i,n)) {
         let str = i.toString();
         if (str.length < n+1) {
             str = "0" + str;
