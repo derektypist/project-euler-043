@@ -12,6 +12,7 @@ function getNumberInfo() {
         txt += `Invalid Input.  Please enter a whole number between 2 and 9 without leading zeros.`;
     } else {
        txt += `You have entered the number ${num}.<p>`;
+       txt += `Sum of all 0 to ${num} pandigital numbers is`;
     }
 
     // Display Information in the Browser
