@@ -53,6 +53,16 @@ function permuteDigits(digits) {
     return digits;
 }
 
+// Function to get the digits
+function getDigits(digits) {
+    let sum = 0;
+    let upperBound = digits.length - 1;
+    for (let i=0;i<=upperBound;i++) {
+        sum += digits[i] * (10**(upperBound-i));
+    }
+    return sum;
+}
+
 /* 
     Function to return the sum of all pandigital numbers which
     pass n-2 of these divisibility properties
@@ -66,7 +76,7 @@ function substringDivisibility(n) {
     const numPermutations = factorial(n+1);
     let permutation = Array(n+1).fill(0).map((_,i) => i);
     for (let i=0;i<numPermutations;i++) {
-        if (testDivisibility(permutation,n)) sum += parseInt(permutation.join(""));
+        if (testDivisibility(permutation,n)) sum += getDigits(permutation);
         permutation = permuteDigits(permutation);
     }
     return sum;
