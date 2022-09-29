@@ -8,8 +8,8 @@ function getNumberInfo() {
     // Get the value of the Input Field
     let num = document.getElementById("mynumber").value;
     // Check if the input is valid
-    if (isNaN(num) || num.length == 0 || num<2 || num>9 || (num.length > 1 && num[0] == "0") || !Number.isInteger(Number(num))) {
-        txt += `Invalid Input.  Please enter a whole number between 2 and 9 without leading zeros.`;
+    if (isNaN(num) || num.length == 0 || num < 3 || num > 9 || (num.length > 1 && num[0] == "0") || !Number.isInteger(Number(num))) {
+        txt += `Invalid Input.  Please enter a whole number between 3 and 9 without leading zeros.`;
     } else {
         txt += `You have entered the number ${num}.<p>`;
         txt += `Sum of all 0 to ${num} pandigital numbers is ${substringDivisibility(num)}.`;
@@ -19,40 +19,29 @@ function getNumberInfo() {
     document.getElementById("numinfo").innerHTML = txt;
 }
 
-// Function to Check Divisibility
+// Check if number num is pandigital
+function isPandigital(num) {
+    const numString = num.toString();
+    return Array(numString.length).fill(0).every((_,i) => numString.indexOf(i) !== -1) || Array(numString.length).fill(0).every((_,i) => numString.indexOf(i+1) !== -1);
+}
+
+// Function to Get Smallest Pandigital
+function smallestPandigital(n) {
+    return Array(n).fill(0).map((_,i) => i).reduce((sum,c) => sum + (n-c) * (10**c),0);
+}
+
+// Function to Get Largest Pandigital
+function largestPandigital(n) {
+    return Array(n).fill(0).map((_,i) => i).reduce((sum,c) => sum + (c)*(10**c),0);
+}
+
 function testDivisibility(digits,n) {
-    for (let i=0;i<n-2;i++) {
-        let threeDigits = 100 * digits[i+1] + 10 * digits[i+2] + digits[i+3];
-        if (threeDigits % DIVISORS[i] !== 0) return false;
+    for (i=0;i<n-2;i++) {
+        let threeDigits = (100 * parseInt(digits[i+1])) + (10 * parseInt(digits[i+2])) + parseInt(digits[i+3]);
+        if (threeDigits % DIVISORS[i] !==0) return false;
     }
     return true;
 }
-
-// Function to Calculate the Factorial of the number num
-function factorial(num) {
-    return num<=1 ? 1 : num * factorial(num-1);
-}
-
-// Function to Permute Digits.  Returns an array.
-function permuteDigits(digits) {
-    const upperBound = digits.length - 1;
-    for (let i=upperBound;i>=0;i--) {
-        if (digits[i] < digits[i+1]) {
-            for (let j=upperBound;j>i;j--) {
-                if (digits[i] < digits[j]) {
-                    [digits[i],digits[j]] = [digits[j],digits[i]];
-                    const numSwaps = (upperBound - i)/2;
-                    for (let k=1;k<=numSwaps;k++) {
-                        [digits[i+k],digits[upperBound-k+1]] = [digits[upperBound-k+1],digits[i+k]];
-                    }
-                    return digits;
-                }
-            }
-        }
-    }
-    return digits;
-}
-
 /* 
     Function to return the sum of all pandigital numbers which
     pass n-2 of these divisibility properties
@@ -62,14 +51,15 @@ function permuteDigits(digits) {
     substringDivisibility(9) returns 16695334890
 */
 function substringDivisibility(n) {
-    let sum = 0;
-    const numPermutations = factorial(n+1);
-    let permutation = Array(n+1).fill(0).map((_,i) => i);
-    for (let i=0;i<numPermutations;i++) {
-        if (testDivisibility(permutation,n)) sum += parseInt(permutation.join(""));
-        permutation = permuteDigits(permutation);
+   let sum = 0;
+   for (let i=smallestPandigital(n);i<=largestPandigital(n+1);i++) {
+    let str = i.toString();
+    if (str.length < n+1) str = "0" + str;
+    if (isPandigital(str)) {
+        if (testDivisibility(str,n)) sum += i;
     }
-    return sum;
+   }
+   return sum;
 }
 
 // Function to Clear Information

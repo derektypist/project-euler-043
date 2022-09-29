@@ -22,7 +22,7 @@ Information at [Project Euler 043](https://projecteuler.net/problem=43)
 
 **Getting Started**
 
-Enter a whole number between 2 and 9 (without leading zeros) and click on the Submit Button.
+Enter a whole number between 3 and 9 (without leading zeros) and click on the Submit Button.
 
 You will see the sum of all 0 to n pandigital numbers with sub-strings fulfilling n-2 of these divisibility properties unless you have made an invalid input.  For example, if you entered 5, you would get 12444480.  Click on the Reset Button to clear the information or to start again.
 
@@ -32,8 +32,8 @@ As a user, I expect to get an error message, if I do any of:
 
 - Not enter anything in the input field
 - Entering text other than a number
-- Entering a number less than 2 or greater than 9
-- Including leading zeros (e.g. 02)
+- Entering a number less than 3 or greater than 9
+- Including leading zeros (e.g. 03)
 - Entering a number, but it is not an integer
 
 As a user, I expect the function `substringDivisibility(5)` to return a number.
@@ -51,7 +51,7 @@ User Stories on function `substringDivisibility(n)` taken from
 
 **Information Architecture**
 
-The function `substringDivisibility(n)` returns a number, where n is a number between 2 and 9.
+The function `substringDivisibility(n)` returns a number, where n is a number between 3 and 9.
 
 ## Features
 
