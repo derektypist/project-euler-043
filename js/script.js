@@ -24,12 +24,6 @@ function factorial(num) {
     return num<=1 ? 1 : num * factorial(num-1);
 }
 
-
-// Function to Get Largest Pandigital
-function largestPandigital(n) {
-    return Array(n).fill(0).map((_,i) => i).reduce((sum,c) => sum + (c)*(10**c),0);
-}
-
 // Function to check if the pandigital number passes all divisibility tests
 function testDivisibility(digits,n) {
     for (i=0;i<n-2;i++) {
@@ -69,12 +63,11 @@ function permuteDigits(digits) {
 */
 function substringDivisibility(n) {
    let sum = 0;
-   for (let i=smallestPandigital(n);i<=largestPandigital(n+1);i++) {
-    let str = i.toString();
-    if (str.length < n+1) str = "0" + str;
-    if (isPandigital(str)) {
-        if (testDivisibility(str,n)) sum += i;
-    }
+   const numPermutations = factorial(n+1);
+   let permutation = Array(n+1).fill(0).map((_,i) => i);
+   for (let i=0;i<numPermutations;i++) {
+    if (testDivisibility(permutation,n)) sum += permutation.reduce((total,c,i) => total + c * (10**(n-i)),0);
+    permutation = permuteDigits(permutation);
    }
    return sum;
 }
