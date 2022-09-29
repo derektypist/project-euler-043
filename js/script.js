@@ -32,7 +32,7 @@ function largestPandigital(n) {
 
 function testDivisibility(digits,n) {
     for (i=0;i<n-2;i++) {
-        let threeDigits = (100 * parseInt(digits[i+1])) + (10 * parseInt(digits[i+2])) + parseInt(digits[i+3]);
+        let threeDigits = (100 * digits[i+1]) + (10 * digits[i+2]) + digits[i+3];
         if (threeDigits % DIVISORS[i] !==0) return false;
     }
     return true;
