@@ -19,16 +19,11 @@ function getNumberInfo() {
     document.getElementById("numinfo").innerHTML = txt;
 }
 
-// Check if number num is pandigital
-function isPandigital(num) {
-    const numString = num.toString();
-    return Array(numString.length).fill(0).every((_,i) => numString.indexOf(i) !== -1) || Array(numString.length).fill(0).every((_,i) => numString.indexOf(i+1) !== -1);
+// Calculate the Factorial of a number num
+function factorial(num) {
+    return num<=1 ? 1 : num * factorial(num-1);
 }
 
-// Function to Get Smallest Pandigital
-function smallestPandigital(n) {
-    return Array(n).fill(0).map((_,i) => i).reduce((sum,c) => sum + (n-c) * (10**c),0);
-}
 
 // Function to Get Largest Pandigital
 function largestPandigital(n) {
