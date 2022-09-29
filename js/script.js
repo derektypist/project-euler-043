@@ -66,7 +66,7 @@ function substringDivisibility(n) {
    const numPermutations = factorial(n+1);
    let permutation = Array(n+1).fill(0).map((_,i) => i);
    for (let i=0;i<numPermutations;i++) {
-    if (testDivisibility(permutation,n)) sum += permutation.reduce((total,c,i) => total + c * (10**(n-i)),0);
+    if (testDivisibility(permutation,n)) sum += permutation.reduce((total,c,i) => total + c * (10**(permutation.length-1-i)),0);
     permutation = permuteDigits(permutation);
    }
    return sum;
