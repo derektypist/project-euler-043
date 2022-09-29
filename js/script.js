@@ -53,11 +53,9 @@ function testDivisibility(digits,n) {
 function substringDivisibility(n) {
    let sum = 0;
    for (let i=smallestPandigital(n);i<=largestPandigital(n+1);i++) {
-    if (isPandigital(i)) {
-        let str = i.toString();
-        if (str.length < n+1) {
-            str = "0" + str;
-        }
+    let str = i.toString();
+    if (str.length < n+1) str = "0" + str;
+    if (isPandigital(str)) {
         if (testDivisibility(str,n)) sum += i;
     }
    }
