@@ -21,9 +21,8 @@ function getNumberInfo() {
 
 // Check if number num is pandigital
 function isPandigital(num,n) {
-    let numString = num.toString();
-    if (numString.length < n + 1) numString = "0" + numString;
-    return Array(numString.length).fill(0).every((_,i) => numString.indexOf(i) !== -1);
+    const numString = num.toString();
+    return Array(numString.length).fill(0).every((_,i) => numString.indexOf(i) !== -1) || Array(numString.length).fill(0).every((_,i) => numString.indexOf(i+1) !== -1);
 }
 
 // Function to Get Smallest Pandigital
