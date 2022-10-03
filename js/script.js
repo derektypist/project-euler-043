@@ -25,7 +25,7 @@ function cycler(s,c,n) {
         if (s.includes(i.toString())) continue;
         let st = s + i.toString();
         if (st.length > 3) {
-            if (parseInt(st.slice(st.length - 3, st.length)) % DIVISORS[st.length - 4] !==0) continue;
+            if (parseInt(st.slice(st.length - 3, st.length)) % DIVISORS[st.length - 4] !=0) continue;
         }
         if (st.length == n+1) {
             c += parseInt(st);
