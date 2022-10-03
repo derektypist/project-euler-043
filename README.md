@@ -22,17 +22,12 @@ Information at [Project Euler 043](https://projecteuler.net/problem=43)
 
 **Getting Started**
 
-Click on the Show Solution button to show the solution starting with n = 3 to n = 9.  Click on the Hide S
+Click on the Show Solution button to show the solution.  The solution ranges from n = 3 to n = 9.  
+Click on the Clear Solution Button to clear (hide) the Solution.
 
 **User Stories**
 
-As a user, I expect to get an error message, if I do any of:
-
-- Not enter anything in the input field
-- Entering text other than a number
-- Entering a number less than 3 or greater than 9
-- Including leading zeros (e.g. 03)
-- Entering a number, but it is not an integer
+As a user, I can show or clear (hide) the solution.
 
 As a user, I expect the function `substringDivisibility(5)` to return a number.
 
@@ -53,7 +48,7 @@ The function `substringDivisibility(n)` returns a number, where n is a number be
 
 ## Features
 
-Allows the user to enter a number in order to get the sum of all 0 to that number of pandigital numbers.  Performs checks on valid user input.  If the input is not valid, an error message is displayed.
+Allows the user to show or clear (hide) the solution as described in [Project Euler 043](https://projecteuler.net/problem=43)
 
 ## Technologies
 
@@ -65,13 +60,17 @@ Ensure all user stories have been met.
 
 ## Deployment
 
-Available on [REPL](https://replit.com/@ddxps46/project-euler-043/#main.py) - Python Version.
+Deployed on [GitHub Pages](https://derektypist.github.io/project-euler-043) at the main branch.
+
+Also available on [CodePen](https://codepen.io/derektypist/pen/ZEorgRJ)
+
+Also vailable on [REPL](https://replit.com/@ddxps46/project-euler-043/#main.py) - Python Version to allow user input.
 
 ## Credits
 
 ### Content
 
-Written by me.
+Function `cycler(s,c,n)` in script.js taken from Xeniafox in the forums of Project Euler 043.  Accessed on 3 October 2022.
 
 ### Acknowledgements
 
