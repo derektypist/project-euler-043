@@ -1,22 +1,17 @@
 // Set Up Global Array
 const DIVISORS = [2,3,5,7,11,13,17];
 
-// Function to Get Number Information (including Invalid Input)
-function getNumberInfo() {
+// Function to Show Solution
+function showSolution() {
     // Set Up Variable
     let txt = "";
-    // Get the value of the Input Field
-    let num = document.getElementById("mynumber").value;
-    // Check if the input is valid
-    if (isNaN(num) || num.length == 0 || num < 3 || num > 9 || (num.length > 1 && num[0] == "0") || !Number.isInteger(Number(num))) {
-        txt += `Invalid Input.  Please enter a whole number between 3 and 9 without leading zeros.`;
-    } else {
-        txt += `You have entered the number ${num}.<p>`;
-        txt += `Sum of all 0 to ${num} pandigital numbers is ${substringDivisibility(num)}.`;
+   
+    // Apply For Loop
+    for (let i=3;i<=9;i++) {
+      txt += `With n = ${i}, Solution is ${substringDivisibility(i)} <br>`;
     }
-
     // Display Information in the Browser
-    document.getElementById("numinfo").innerHTML = txt;
+    document.getElementById("solution").innerHTML = txt;
 }
 
 // Cycler Function with Recursion.  Returns a number.
@@ -50,8 +45,8 @@ function substringDivisibility(n) {
     return cycler("",0,n);
 }
 
-// Function to Clear Information
-function clearInfo() {
+// Function to Clear Solution
+function clearSolution() {
     let txt = "";
-    document.getElementById("numinfo").innerHTML = txt;
+    document.getElementById("solution").innerHTML = txt;
 }
