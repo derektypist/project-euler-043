@@ -21,8 +21,19 @@ function getNumberInfo() {
 
 // Function to Generate Permutations
 function genPermut(choice,i=-3,stack='') {
-  
-}
+  if (i<0 || (i>0 && parseInt(stack.slice(i,i+3))) % DIVISORS[i] == 0) {
+    if (choice) {
+      let choiceCopy = choice.map((c) => [...c]);
+      for (let char of choice) {
+        choiceCopy.splice(choiceCopy.indexOf(char),1);
+        return genPermut(choiceCopy,i+1,stack + char);
+      }
+    } else {
+        return parseInt(stack);
+    }
+    }
+  }
+
   
 /* 
     Function to return the sum of all pandigital numbers which
