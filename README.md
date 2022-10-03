@@ -64,7 +64,7 @@ Deployed on [GitHub Pages](https://derektypist.github.io/project-euler-043) at t
 
 Also available on [CodePen](https://codepen.io/derektypist/pen/ZEorgRJ)
 
-Also vailable on [REPL](https://replit.com/@ddxps46/project-euler-043/#main.py) - Python Version to allow user input.
+Also available on [REPL](https://replit.com/@ddxps46/project-euler-043/#main.py) - Python Version to allow user input.
 
 ## Credits
 
