@@ -21,11 +21,20 @@ function getNumberInfo() {
 
 // Cycler Function - Use of Recursion - Returns a number
 function cycler(s,c,n) {
-
+    for (let i=0;i<n+1;i++) {
+        if (s.includes(i.toString())) continue;
+        let st = s + i.toString();
+        if (st.length > 3) {
+            if (parseInt(st.slice(st.length - 3, st.length)) % DIVISORS[st.length - 4] !==0) continue;
+        }
+        if (st.length == n+1) {
+            c += parseInt(st);
+        } else {
+            c = cycler(st,c,n);
+        }
+    }
+    return c;
 }
-
-
-
 
 /* 
     Function to return the sum of all pandigital numbers which
