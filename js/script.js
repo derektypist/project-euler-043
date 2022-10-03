@@ -46,13 +46,11 @@ function genPermut(choice,i=-2,stack='') {
 */
 function substringDivisibility(n) {
     let sum = 0;
-  const numPermutations = factorial(n+1);
-  let permutation = Array(n+1).fill(0).map((_,i) => i);
-  for (let i=0;i<numPermutations;i++) {
-    if (testDivisibility(permutation,n)) sum += parseInt(permutation.join(""));
-    permutation = permuteDigits(permutation);
-  }
-  return sum;
+    let digits = Array(n+1).fill(0).map((_,i) => i.toString());
+    for (let panDig of genPermut(digits)) {
+      sum += panDig;
+    }
+    return sum;
 }
 
 // Function to Clear Information
