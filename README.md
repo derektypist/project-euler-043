@@ -67,7 +67,7 @@ Ensure all user stories have been met.
 
 ## Deployment
 
-Deployed on [GitHub Pages](https://derektypist.github.io/project-euler-043) at the main branch.
+Available on [REPL](https://replit.com/@ddxps46/project-euler-043/#main.py) - Python Version.
 
 ## Credits
 
