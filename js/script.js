@@ -20,7 +20,7 @@ function getNumberInfo() {
 }
 
 // Function to Generate Permutations
-function genPermut(choice,i=-3,stack='') {
+function genPermut(choice,i=-2,stack='') {
   if (i<0 || (i>0 && parseInt(stack.slice(i,i+3))) % DIVISORS[i] == 0) {
     if (choice) {
       let choiceCopy = choice.map((c) => [...c]);
@@ -32,6 +32,7 @@ function genPermut(choice,i=-3,stack='') {
         return parseInt(stack);
     }
     }
+    return 0;
   }
 
   
