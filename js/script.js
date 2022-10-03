@@ -19,39 +19,13 @@ function getNumberInfo() {
     document.getElementById("numinfo").innerHTML = txt;
 }
 
-// Calculate the Factorial of a number num
-function factorial(num) {
-    return num<=1 ? 1 : num * factorial(num-1);
+// Cycler Function - Use of Recursion - Returns a number
+function cycler(s,c,n) {
+
 }
 
-// Function to check if the pandigital number passes all divisibility tests
-function testDivisibility(digits,n) {
-    for (i=0;i<n-2;i++) {
-        let threeDigits = (100 * digits[i+1]) + (10 * digits[i+2]) + digits[i+3];
-        if (threeDigits % DIVISORS[i] !==0) return false;
-    }
-    return true;
-}
 
-// Function to permute digits.  Returns an array.
-function permuteDigits(digits) {
-    const upperBound = digits.length - 1;
-    for (let i=upperBound-1;i>=0;i--) {
-        if (digits[i] < digits[i+1]) {
-            for (let j=upperBound;j>i;j--) {
-                if (digits[i] < digits[j]) {
-                    [digits[i],digits[j]] = [digits[j],digits[i]];
-                    const numSwaps = (upperBound - i)/2;
-                    for (let k=1;k<=numSwaps;k++) {
-                        [digits[i+k],digits[upperBound-k+1]] = [digits[upperBound-k+1],digits[i+k]];
-                    }
-                    return digits;
-                }
-            }
-        }
-    }
-    return digits;
-}
+
 
 /* 
     Function to return the sum of all pandigital numbers which
