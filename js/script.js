@@ -45,14 +45,7 @@ function cycler(s,c,n) {
     substringDivisibility(9) returns 16695334890
 */
 function substringDivisibility(n) {
-   let sum = 0;
-   const numPermutations = factorial(n+1);
-   let permutation = Array(n+1).fill(0).map((_,i) => i);
-   for (let i=0;i<numPermutations;i++) {
-    if (testDivisibility(permutation,n)) sum += permutation.reduce((total,c,i) => total + c * (10**(permutation.length-1-i)),0);
-    permutation = permuteDigits(permutation);
-   }
-   return sum;
+   return cycler("",0,n);
 }
 
 // Function to Clear Information
