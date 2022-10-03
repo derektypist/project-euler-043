@@ -19,21 +19,23 @@ function getNumberInfo() {
     document.getElementById("numinfo").innerHTML = txt;
 }
 
-// Function to Generate Permutations
-function genPermut(choice,i=-2,stack='') {
-  if (i<0 || (i>0 && parseInt(stack.slice(i,i+3))) % DIVISORS[i] == 0) {
-    if (choice) {
-      let choiceCopy = choice.map((c) => [...c]);
-      for (let char of choice) {
-        choiceCopy.splice(choiceCopy.indexOf(char),1);
-        return genPermut(choiceCopy,i+1,stack + char);
-      }
-    } else {
-        return parseInt(stack);
-    }
-    }
-    return 0;
+// Cycler Function with Recursion.  Returns a number.
+function cycler(s,c,n) {
+  for (let i=0;i<n+1;i++) {
+   if (s.includes(i.toString())) continue;
+   let st = s + i.toString();
+   if (st.length > 3) {
+    if (parseInt(st.slice(st.length-3,st.length)) % DIVISORS[st.length - 4]!=0) continue;
+   }
+  if (st.length==n+1) {
+    c += parseInt(st);
   }
+  else {
+    c = cycler(st,c,n);
+  }
+ }
+  return c;
+}
 
   
 /* 
@@ -45,12 +47,7 @@ function genPermut(choice,i=-2,stack='') {
     substringDivisibility(9) returns 16695334890
 */
 function substringDivisibility(n) {
-    let sum = 0;
-    let digits = Array(n+1).fill(0).map((_,i) => i.toString());
-    for (let panDig of genPermut(digits)) {
-      sum += panDig;
-    }
-    return sum;
+    return cycler("",0,n);
 }
 
 // Function to Clear Information
