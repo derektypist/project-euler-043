@@ -34,29 +34,21 @@
             <li>d<sub>7</sub>d<sub>8</sub>d<sub>9</sub>= 728 is divisible by 13</li>
             <li>d<sub>8</sub>d<sub>9</sub>d<sub>10</sub>= 289 is divisible by 17</li>
         </ul>
-        <p>Find the sum of all 0 to n pandigital numbers with substrings fulfilling n-2 of these divisibility
-            properties. Begin by entering a number.</p>
+        <p>Find the sum of all 0 to n pandigital numbers with substrings fulfilling n-2 of these divisibility properties.</p>
     </section>
 
-    <!-- Set Up Form -->
+    <!-- Set Up and Center Buttons -->
     <section class="container-fluid">
-        <form>
-            <!-- Set Up Label and Input -->
-            <article class="mb-3">
-                <label for="mynumber" class="form-label">Number (Required)</label>
-                <input class="form-control" placeholder="Enter whole number between 3 and 9 (without leading zeros)"
-                    title="Enter whole number between 3 and 9 (without leading zeros)" id="mynumber">
-            </article>
 
             <!-- Set Up and Center Buttons -->
             <article class="d-grid gap-2 d-flex justify-content-center">
-                <button type="button" class="btn btn-info" onclick="getNumberInfo()">Submit</button>
-                <button type="reset" class="btn btn-warning" onclick="clearInfo()">Reset</button>
+                <button type="button" class="btn btn-info" onclick="showSolution()">Show Solution</button>
+                <button type="reset" class="btn btn-warning" onclick="clearSolution()">Clear Solution</button>
             </article>
         </form>
 
-        <!-- Display Number Information -->
-        <p id="numinfo"></p>
+        <!-- Solution Information -->
+        <p id="solution"></p>
 
         <!-- Load Script -->
         <script src="js/script.js"></script>
