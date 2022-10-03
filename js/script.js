@@ -19,23 +19,37 @@ function getNumberInfo() {
     document.getElementById("numinfo").innerHTML = txt;
 }
 
-// Cycler Function - Use of Recursion - Returns a number
-function cycler(s,c,n) {
-    for (let i=0;i<n+1;i++) {
-        if (s.includes(i.toString())) continue;
-        let st = s + i.toString();
-        if (st.length > 3) {
-            if (parseInt(st.slice(st.length - 3, st.length)) % DIVISORS[st.length - 4] !=0) continue;
-        }
-        if (st.length == n+1) {
-            c += parseInt(st);
-        } else {
-            c = cycler(st,c,n);
-        }
+function testDivisibility(digits,n) {
+    for (let i=0;i<n-2;i++) {
+      let threeDigits = 100 * digits[i+1] + 10 * digits[i+2] + digits[i+3];
+      if (threeDigits % DIVISORS[i] !==0) return false;
     }
-    return c;
-}
-
+    return true;
+  }
+  
+  function factorial(num) {
+    return num<=1 ? 1 : num * factorial(num-1);
+  }
+  
+  function permuteDigits(digits) {
+    const upperBound = digits.length - 1;
+    for (let i=upperBound;i>=0;i--) {
+      if (digits[i] < digits[i+1]) {
+        for (let j=upperBound;j>i;j--) {
+          if (digits[i] < digits[j]) {
+            [digits[i],digits[j]] = [digits[j],digits[i]];
+            const numSwaps = (upperBound - i) / 2;
+            for (let k=1;k<=numSwaps;k++) {
+              [digits[i+k],digits[upperBound-k+1]] = [digits[upperBound-k+1],digits[i+k]];
+            }
+            return digits;
+          }
+        }
+      }
+    }
+    return digits;
+  }
+  
 /* 
     Function to return the sum of all pandigital numbers which
     pass n-2 of these divisibility properties
@@ -45,7 +59,14 @@ function cycler(s,c,n) {
     substringDivisibility(9) returns 16695334890
 */
 function substringDivisibility(n) {
-   return cycler("",0,n);
+    let sum = 0;
+  const numPermutations = factorial(n+1);
+  let permutation = Array(n+1).fill(0).map((_,i) => i);
+  for (let i=0;i<numPermutations;i++) {
+    if (testDivisibility(permutation,n)) sum += parseInt(permutation.join(""));
+    permutation = permuteDigits(permutation);
+  }
+  return sum;
 }
 
 // Function to Clear Information
